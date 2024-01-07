@@ -15,9 +15,10 @@ build: $(ASM_OBJECTS)
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/boot/%.asm
 	$(ASM) $(ASM_FLAGS) -o $@ $<
+	dd if=$(OBJECTS) of=$(TARGET) bs=1048576 count=1
 
 run:
-	$(VM) $(VM_FLAGS) $(OBJECTS)
+	$(VM) $(VM_FLAGS) $(TARGET)
 
 clean:
 	rm $(BIN_DIR)/*

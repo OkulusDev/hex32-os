@@ -4,7 +4,7 @@ org 0x7c00
 jmp main
 
 Message db "HEX32-OS", 0x0
-AnyKey db "Press any key to shutdown", 0x0
+AnyKey db "Press any key to shutdown . . . ", 0x0
 
 print:
 	lodsb
@@ -51,6 +51,7 @@ is_key_pressed:
 	ret
 
 main:
+    mov bp, 0x8000
 	cli
 	mov ax,cs
 	mov ds,ax
